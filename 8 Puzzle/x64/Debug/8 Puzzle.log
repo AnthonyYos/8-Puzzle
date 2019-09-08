@@ -1,0 +1,3 @@
+﻿  Source.cpp
+g:\visual studio projects\c++\8-puzzle\8 puzzle\source.cpp(10): warning C4326: return type of 'main' should be 'int' instead of 'void'
+  8 Puzzle.vcxproj -> G:\Visual Studio Projects\C++\8-Puzzle\x64\Debug\8 Puzzle.exe

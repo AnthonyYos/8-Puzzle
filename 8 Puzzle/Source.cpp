@@ -14,21 +14,20 @@ void main() {
 		exit(1);
 	}
 
-	int numberOfGrids;
+	int numberOfBoards;
 	string value;
 	vector<vector<int>> puzzlePieces;
 	int placedPieces = 0;
 	int puzzleIndex = 0;
 
-	read >> numberOfGrids;
-	puzzlePieces.resize(numberOfGrids);//Resize vector to have n amount of 
+	read >> numberOfBoards;
+	puzzlePieces.resize(numberOfBoards);//Resize vector to have n amount of boards
 
 	while (read >> value) {
 		if (placedPieces == 9) {
 			puzzleIndex++;
 			placedPieces = 0;
 		}
-
 		if (value == "E")
 			puzzlePieces[puzzleIndex].push_back(0);
 		else {
@@ -37,16 +36,16 @@ void main() {
 		}
 		placedPieces++;
 	}
-	//vector<Node> board; each board[i] is a vector of tiles for one board
-	vector<Board> boards;
+	//Push a board into puzzleBoards each intialized with its own arrangement
+	vector<Board> puzzleBoards;
 	for (int i = 0; i < puzzlePieces.size(); i++) {
-		boards.push_back(Board(puzzlePieces[i]));
+		puzzleBoards.push_back(Board(puzzlePieces[i]));
 	}
 
-	for (int i = 0; i < boards.size(); i++) {
+	for (int i = 0; i < puzzleBoards.size(); i++) {
 		Bfs bfs;
 		cout << "Puzzle " << i << endl;
-		bfs.doBFS(boards[i]);
+		bfs.doBFS(puzzleBoards[i]);
 		cout << endl;
 	}
 

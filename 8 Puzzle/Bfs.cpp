@@ -20,7 +20,7 @@ void Bfs::doBFS(Board initalBoard)
 	//Push board into openstates, board states that haven't been checked
 	openStates.push_back(initalBoard);
 
-
+	//Check the next board 
 	while (!openStates.empty()) {
 		Board currentBoardState = openStates.front();
 		visitedStates.push_back(currentBoardState);
@@ -32,7 +32,7 @@ void Bfs::doBFS(Board initalBoard)
 		else {
 			//Create a new set  of childboards of legal moves in a cardinal direction
 			currentBoardState.makeAMove();
-			//Check if a childboard is a state that has been checked or will be checked
+			//Check if a childboard is a state that has been visited or it will be visited, if not for both push it into the openStates for checking
 			for (int i = 0; i < currentBoardState.childBoardSize(); i++) {
 				Board child = currentBoardState.getChildBoard(i);
 				if (!checkForRepeats(child, visitedStates) && !checkForRepeats(child, openStates)) {
